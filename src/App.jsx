@@ -1,12 +1,9 @@
-
+import Body from "./Body"
 function App() {
   return (
-    <>
-      
-      <p className="text-center p-4">
-        Hello world
-      </p>
-    </>
+   <>
+      <Body/>
+   </>
   )
 }
 
