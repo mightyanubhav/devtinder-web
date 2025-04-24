@@ -1,6 +1,30 @@
 import React from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
+    const [email, setEmail] = useState('anna123@gmail.com')
+    const [password, setPassword] = useState('goodPassword@')
+    const handleLogin = async() =>{
+        try {
+            const response =await axios.post('http://localhost:7777/login', {
+                emailId: email,
+                password
+              }, {
+                withCredentials: true
+              });
+            console.log("Login success:", response.data);
+          } catch (error) {
+            console.error("Login failed:", error.response?.data || error.message);
+          }
+    }
+    const navigate = useNavigate()
+    const handleSignup =() =>{
+        navigate('/signup')
+    }
+
+
   return (
     <div className="card bg-base-300 w-96 shadow-sm flex object-center">
       <figure>
@@ -29,7 +53,13 @@ const Login = () => {
               <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
             </g>
           </svg>
-          <input type="email" placeholder="mail@site.com" required />
+          <input 
+          type="email" 
+          placeholder="mail@site.com" 
+          required 
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          />
         </label>
         <div className="validator-hint hidden">Enter valid email address</div>
         <label className="input validator">
@@ -56,6 +86,8 @@ const Login = () => {
             minlength="8"
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </label>
         <p className="validator-hint hidden">
@@ -67,8 +99,8 @@ const Login = () => {
         </p>
 
         <div className="card-actions justify-center">
-          <button className="btn btn-primary mr-2">Login</button>
-          <button className="btn btn-primary ml-2">Signup</button>
+          <button className="btn btn-primary mr-2" onClick={handleLogin}>Login</button>
+          <button className="btn btn-primary ml-2" onClick={handleSignup}>Signup</button>
         </div>
       </div>
     </div>
