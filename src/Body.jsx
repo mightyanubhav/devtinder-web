@@ -1,10 +1,10 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Navbar from './Navbar'
-import Login from './Login'
-import Signup from './Signup'
+import Navbar from './components/Navbar'
+import Login from './components/Login'
+import Signup from './components/Signup'
 import Landing from './Landing'
-import Feed from './Feed'
+import Feed from './components/Feed'
 
 const Body = () => {
   return (
