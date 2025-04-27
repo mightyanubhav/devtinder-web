@@ -12,9 +12,9 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post(BASE_URL + 'logout', {}, { withCredentials: true });
+      await axios.post(BASE_URL + "logout", {}, { withCredentials: true });
       dispatch(logoutUser());
-      navigate('/');
+      navigate("/");
     } catch (error) {
       console.error("Logout failed:", error.response?.data || error.message);
     }
@@ -43,7 +43,10 @@ const Navbar = () => {
             <div className="w-10 rounded-full">
               <img
                 alt="user profile img"
-                src={user?.profileImage || "https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_hybrid&w=740"}
+                src={
+                  user?.profileImage ||
+                  "https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_hybrid&w=740"
+                }
               />
             </div>
           </div>
@@ -52,10 +55,13 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a className="justify-between">
+              <button
+                onClick={() => navigate("/profile")}
+                className="justify-between text-left w-full"
+              >
                 Profile
-                <span className="badge">New</span>
-              </a>
+                <span className="badge">👀</span>
+              </button>
             </li>
             <li>
               <a>Settings</a>
