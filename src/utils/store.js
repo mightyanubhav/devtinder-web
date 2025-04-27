@@ -1,11 +1,14 @@
+// src/utils/store.js
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./userSlice";
+import feedReducer from "./feedSlice"; 
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
   user: userReducer,
+  feed: feedReducer, 
 });
 
 const persistConfig = {
@@ -20,7 +23,6 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        // Ignore these action types from redux-persist
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
