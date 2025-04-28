@@ -19,16 +19,18 @@ const Navbar = () => {
       console.error("Logout failed:", error.response?.data || error.message);
     }
   };
-  const handleSetting = async () =>{
-    console.log('setting')
-  }
-  const handleConnections = async() =>{
-    console.log('connections')
-  }
+  const handleSetting = () => {
+    navigate("/setting");
+  };
 
-  const handleRequests = async() =>{
-    console.log('requests')
-  }
+  const handleConnections = () => {
+    navigate("/connections");
+  };
+
+  const handleRequests = () => {
+    navigate("/pending");
+  };
+
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="flex-1">
@@ -81,7 +83,7 @@ const Navbar = () => {
             <li>
               {/* Instead of <a>, we use a button for Logout */}
               <button onClick={handleRequests} className="text-left w-full">
-                Requests
+                Pending Requests
               </button>
             </li>
             <li>

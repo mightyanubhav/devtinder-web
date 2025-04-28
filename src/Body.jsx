@@ -9,7 +9,7 @@ import Profile from "./components/Profile";
 import PrivateRoute from "./components/PrivateRoute";
 import Setting from "./components/Setting";
 import Connections from "./components/Connections"
-import Pending from "./components/Pending";
+import ReviewRequests from "./components/ReviewRequests";
 
 const Body = () => {
   return (
@@ -47,7 +47,7 @@ const Body = () => {
             path="pending"
             element={
               <PrivateRoute>
-                <Pending />
+                <ReviewRequests />
               </PrivateRoute>
             }
           />
