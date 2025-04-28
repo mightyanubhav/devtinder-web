@@ -7,6 +7,9 @@ import Landing from "./Landing";
 import Feed from "./components/Feed";
 import Profile from "./components/Profile";
 import PrivateRoute from "./components/PrivateRoute";
+import Setting from "./components/Setting";
+import Connections from "./components/Connections"
+import Pending from "./components/Pending";
 
 const Body = () => {
   return (
@@ -32,7 +35,32 @@ const Body = () => {
               </PrivateRoute>
             }
           />
+          <Route
+            path="setting"
+            element={
+              <PrivateRoute>
+                <Setting />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="pending"
+            element={
+              <PrivateRoute>
+                <Pending />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="connections"
+            element={
+              <PrivateRoute>
+                <Connections />
+              </PrivateRoute>
+            }
+          />
         </Route>
+        
       </Routes>
     </BrowserRouter>
   );
